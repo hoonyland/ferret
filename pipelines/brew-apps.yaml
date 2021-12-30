@@ -58,3 +58,13 @@ stages:
         compareTo: "spark 3"
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install --cask spark
+
+  kakaotalk installed:
+    description: install kakaotalk if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas info 869223134
+        compareTo: "Kakaotalk"
+    setup:
+      - command: mas install 869223134

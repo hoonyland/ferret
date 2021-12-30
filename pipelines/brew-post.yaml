@@ -4,7 +4,7 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: {{user.home}}/.nvm/nvm.sh list
+        command: \. {{user.home}}/.nvm/nvm.sh list
         compareTo: "lts"
     setup:
       - command: nvm install --lts
