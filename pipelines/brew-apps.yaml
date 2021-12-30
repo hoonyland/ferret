@@ -65,6 +65,6 @@ stages:
       condition:
         operator: not_contains
         command: mas info 869223134
-        compareTo: "Kakaotalk"
+        compareTo: "Kakao"
     setup:
       - command: mas install 869223134
