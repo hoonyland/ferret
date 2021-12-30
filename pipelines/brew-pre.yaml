@@ -14,7 +14,7 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: fzf version
+        command: fzf --version
         compareTo: "0."
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install fzf && $(arch -arm64e /opt/homebrew/bin/brew --prefix)/opt/fzf/install
