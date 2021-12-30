@@ -99,17 +99,6 @@ stages:
     setup:
       - command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-  nvm register:
-    description: register nvm on zshrc if it is not registered
-    when:
-      condition:
-        operator: not_contains
-        command: cat ~/.zshrc | rg nvm
-        compareTo: "nvm"
-    setup:
-      - command: echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
-      - command: echo "[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"" >> ~/.zshrc
-      - command: echo "[ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\"" >> ~/.zshrc
 
   gpg2 installed:
     description: install gpg2 if it is not installed

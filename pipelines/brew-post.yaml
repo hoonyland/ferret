@@ -1,0 +1,10 @@
+stages:
+  nvm lts installed:
+    description: install nvm lts if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: nvm list
+        compareTo: "lts"
+    setup:
+      - command: nvm install --lts
