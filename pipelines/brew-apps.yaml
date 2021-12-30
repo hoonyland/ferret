@@ -74,8 +74,8 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: mas info 441258766
-        compareTo: "Magnet"
+        command: mas list
+        compareTo: "441258766"
     setup:
       - command: mas install 441258766
 
@@ -84,7 +84,7 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: mas info 869223134
-        compareTo: "Kakao"
+        command: mas list
+        compareTo: "869223134"
     setup:
       - command: mas install 869223134
