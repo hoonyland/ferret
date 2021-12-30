@@ -109,3 +109,13 @@ stages:
         compareTo: "gpg (GnuPG)"
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install gpg2
+
+  oh-my-zsh installed:
+    description: install oh-my-zsh if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: ls ~/.oh-my-zsh/
+        compareTo: "plugins"
+    setup:
+      - command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
