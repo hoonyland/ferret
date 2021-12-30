@@ -103,14 +103,14 @@ stages:
     description: register nvm on zshrc if it is not registered
     when:
       condition:
-        operator: contains
-        command: nvm
-        compareTo: "not found: nvm"
+        operator: not_contains
+        command: cat ~/.zshrc | rg nvm
+        compareTo: "nvm"
     setup:
-      - command: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-      - command: [ -s "$NVM_DIR/nvm.sh" ]
-      - command: \. "$NVM_DIR/nvm.sh"
-
+      - command: echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
+      - command: echo "[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"" >> ~/.zshrc
+      - command: echo "[ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\"" >> ~/.zshrc
+      - command: source ~/.zshrc
 
   gpg2 installed:
     description: install gpg2 if it is not installed
