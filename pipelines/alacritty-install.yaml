@@ -1,0 +1,11 @@
+stages:
+  vscode installed:
+    description: install alacritty if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask alacritty
+        compareTo: "alacritty"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install --cask alacritty
+
