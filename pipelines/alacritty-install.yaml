@@ -1,5 +1,5 @@
 stages:
-  vscode installed:
+  installed:
     description: install alacritty if it is not installed
     when:
       condition:
