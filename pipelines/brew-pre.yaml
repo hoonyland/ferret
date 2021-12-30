@@ -17,7 +17,7 @@ stages:
         command: fzf version
         compareTo: "0."
     setup:
-      - command: arch -arm64e /opt/homebrew/bin/brew install fsf && $(arch -arm64e /opt/homebrew/bin/brew --prefix)/opt/fzf/install
+      - command: arch -arm64e /opt/homebrew/bin/brew install fzf && $(arch -arm64e /opt/homebrew/bin/brew --prefix)/opt/fzf/install
 
   python3.9 installed:
     description: install python if it is not installed
