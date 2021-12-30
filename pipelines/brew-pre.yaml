@@ -94,10 +94,10 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: arch -arm64e /opt/homebrew/bin/brew ls --version nvm
+        command: nvm --version
         compareTo: "0."
     setup:
-      - command: arch -arm64e /opt/homebrew/bin/brew install nvm
+      - command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
   nvm register:
     description: register nvm on zshrc if it is not registered
@@ -110,7 +110,6 @@ stages:
       - command: echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
       - command: echo "[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"" >> ~/.zshrc
       - command: echo "[ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\"" >> ~/.zshrc
-      - command: source ~/.zshrc
 
   gpg2 installed:
     description: install gpg2 if it is not installed
