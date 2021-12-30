@@ -88,6 +88,7 @@ stages:
         compareTo: "tmux 3"
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install tmux
+      - command: echo "tmux attach &> /dev/null"
 
   nvm installed:
     description: install nvm if it is not installed
@@ -119,3 +120,4 @@ stages:
         compareTo: "plugins"
     setup:
       - command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - command: echo "$(cat {{user.home}}/.zshrc.pre-oh-my-zsh)" >> {{user.home}}/.zshrc
