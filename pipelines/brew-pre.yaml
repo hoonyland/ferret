@@ -94,7 +94,7 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: nvm -v
+        command: arch -arm64e /opt/homebrew/bin/brew ls --version nvm
         compareTo: "0."
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install nvm
