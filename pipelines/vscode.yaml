@@ -1,0 +1,11 @@
+stages:
+  vscode installed:
+    description: install vscode if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew info homebrew/cask/visual-studio-code
+        compareTo: "visual-studio-code: 1.63.2 (auto_updates)"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install homebrew/cask/visual-studio-code
+
