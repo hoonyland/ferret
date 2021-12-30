@@ -69,6 +69,16 @@ stages:
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install homebrew/cask-versions/firefox-developer-edition
 
+  magnet installed:
+    description: install magnet if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas info 441258766
+        compareTo: "Magnet"
+    setup:
+      - command: mas install 441258766
+
   kakaotalk installed:
     description: install kakaotalk if it is not installed
     when:
