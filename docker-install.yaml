@@ -1,0 +1,33 @@
+stages:
+  docker installed:
+    description: install docker if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: docker version
+        compareTo: "Server: Docker Engine"
+    setup:
+      - command: mbrew install homebrew/cask/docker
+
+  start docker:
+    description: start docker if it is not up
+    when:
+      condition:
+        operator: not_contains
+        command: docker version
+        compareTo: "Server: Docker Engine"
+    setup:
+      - command: open -a Docker
+
+  check docker is up:
+    description: make sure docker server is up
+    when:
+      timeout: 2m
+      retryInterval: 5s
+      fail: true
+      condition:
+        operator: contains
+        command: docker version
+        compareTo: "Server: Docker Engine"
+    setup:
+      - command: echo "docker is up"
