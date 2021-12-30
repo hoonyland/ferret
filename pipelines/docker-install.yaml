@@ -7,7 +7,7 @@ stages:
         command: docker version
         compareTo: "Server: Docker Engine"
     setup:
-      - command: mbrew install homebrew/cask/docker
+      - command: arch -arm64e /opt/homebrew/bin/brew install homebrew/cask/docker
 
   start docker:
     description: start docker if it is not up
