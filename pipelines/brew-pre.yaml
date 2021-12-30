@@ -105,6 +105,6 @@ stages:
       condition:
         operator: not_contains
         command: gpg --version
-        compareTo: "gpg"
+        compareTo: "gpg (GnuPG)"
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install gpg2
