@@ -49,15 +49,26 @@ stages:
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install --cask slack
 
+  terraform installed:
+    description: install terraform if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions terraform
+        compareTo: "terraform 1"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew tap hashicorp/tap
+      - command: arch -arm64e /opt/homebrew/bin/brew install hashicorp/tap/terraform 
+
   spark installed:
     description: install spark if it is not installed
     when:
       condition:
         operator: not_contains
-        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask spark
-        compareTo: "spark 3"
+        command: mas list
+        compareTo: "1176895641"
     setup:
-      - command: arch -arm64e /opt/homebrew/bin/brew install --cask spark
+      - command: mas install 1176895641
 
   firefox-developer-edition installed:
     description: install firefox-developer-edition if it is not installed
