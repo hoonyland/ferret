@@ -34,10 +34,10 @@ stages:
     when:
       condition:
         operator: not_contains
-        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask docker
-        compareTo: "docker 4"
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions docker
+        compareTo: "docker 20"
     setup:
-      - command: arch -arm64e /opt/homebrew/bin/brew install --cask docker
+      - command: arch -arm64e /opt/homebrew/bin/brew install docker
 
   slack installed:
     description: install slack if it is not installed
