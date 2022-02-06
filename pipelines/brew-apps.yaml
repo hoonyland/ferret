@@ -129,3 +129,23 @@ stages:
         compareTo: "107."
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install --cask figma
+
+  colima installed:
+    description: install colima if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions colima
+        compareTo: "colima 0."
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install colima
+
+  kubectl installed:
+    description: install kubectl if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions kubectl
+        compareTo: "kubectl 1."
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install kubectl
