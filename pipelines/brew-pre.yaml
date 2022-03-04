@@ -1,4 +1,14 @@
 stages:
+  bat installed:
+    description: install bat if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: bat -V
+        compareTo: "bat 0."
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install bat
+
   mas installed:
     description: install mas if it is not installed
     when:

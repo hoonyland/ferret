@@ -100,16 +100,6 @@ stages:
     setup:
       - command: mas install 869223134
 
-  togg installed:
-    description: install togg if it is not installed
-    when:
-      condition:
-        operator: not_contains
-        command: mas list
-        compareTo: "957734279"
-    setup:
-      - command: mas install 957734279
-
   postman installed:
     description: install postman if it is not installed
     when:
