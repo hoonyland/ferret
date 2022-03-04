@@ -9,6 +9,17 @@ stages:
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install homebrew/cask/visual-studio-code
 
+  iterm2 installed:
+    description: install iterm2 if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask iterm2
+        compareTo: "iterm2 3"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install homebrew/cask/iterm2
+
+
   alfred installed:
     description: install alfred if it is not installed
     when:

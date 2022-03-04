@@ -1,4 +1,14 @@
 stages:
+  gh installed:
+    description: install gh if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: gh --version
+        compareTo: "gh version"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install gh
+
   bat installed:
     description: install bat if it is not installed
     when:
