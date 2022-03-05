@@ -150,3 +150,24 @@ stages:
         compareTo: "kubectl 1."
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install kubectl
+
+  telegram installed:
+    description: install telegram if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask telegram
+        compareTo: "telegram 8"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install --cask telegram
+
+  drafts installed:
+    description: install drafts if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas list
+        compareTo: "1435957248"
+    setup:
+      - command: drafts install 1435957248
+
