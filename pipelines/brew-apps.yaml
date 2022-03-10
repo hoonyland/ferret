@@ -1,4 +1,14 @@
 stages:
+  kubectx installed:
+    description: install kubectx if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions kubectx
+        compareTo: "kubectx 0"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install kubectx
+
   vscode installed:
     description: install vscode if it is not installed
     when:
@@ -170,4 +180,44 @@ stages:
         compareTo: "1435957248"
     setup:
       - command: drafts install 1435957248
+
+  things installed:
+    description: install things if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas list
+        compareTo: "904280696"
+    setup:
+      - command: mas install 904280696
+
+  obsidian installed:
+    description: install obsidian if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask obsidian
+        compareTo: "obsidian 0"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install --cask obsidian
+
+  fantastical installed:
+    description: install fantastical if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas list
+        compareTo: "975937182"
+    setup:
+      - command: mas install 975937182
+
+  sequel-pro installed:
+    description: install sequel-pro if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: arch -arm64e /opt/homebrew/bin/brew ls --versions --cask sequel-pro
+        compareTo: "sequel-pro 1"
+    setup:
+      - command: arch -arm64e /opt/homebrew/bin/brew install --cask sequel-pro
 
