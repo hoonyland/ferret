@@ -221,3 +221,12 @@ stages:
     setup:
       - command: arch -arm64e /opt/homebrew/bin/brew install --cask sequel-pro
 
+  pocket installed:
+    description: install pocket if it is not installed
+    when:
+      condition:
+        operator: not_contains
+        command: mas list
+        compareTo: "568494494"
+    setup:
+      - command: mas install 568494494
